@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    
+ <!--加载配置⽂件，为下⾯读取数据库信息准备-->
+    <properties resource="application.properties"/>
+
+    <!-- <classPathEntry location="/Users/wansq/.m2/repository/mysql/mysql-connector-java/8.0.11/mysql-connector-java-8.0.11.jar" /> -->
+    <!--defaultModelType="flat" ⼤数据字段，不分表 -->
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="autoDelimitKeywords" value="true" />
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+        <property name="javaFileEncoding" value="utf-8" />
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
+        <!-- 注释 -->
+        <commentGenerator >
+            <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否⽣成注释代时间戳-->
+        </commentGenerator>
+        <!--数据库链接地址账号密码-->
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}" 
+        connectionURL="${spring.datasource.url}" 
+        userId="${spring.datasource.username}" 
+        password="${spring.datasource.password}"></jdbcConnection>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使⽤bigDecimal， false可⾃动转化以下类型（Long, Integer, Short,
+            etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--⽣成Model类存放位置-->
+        <javaModelGenerator targetPackage="com.xue.cookbook.auth.model" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- ⽣成map xml⽂件 -->
+        <sqlMapGenerator targetPackage="auth" targetProject="src/main/resources/mapper" >
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- ⽣成mapxml对应client，也就是接⼝dao -->
+        <javaClientGenerator targetPackage="com.xue.cookbook.auth.dao" targetProject="src/main/java" type="XMLMAPPER" >
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <table tableName="auth_roles" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="id" value=""/>
+            <property name="name" value=""/>
+        </table>
+
+        <table tableName="auth_permissions" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="id" value=""/>
+            <property name="parent_id" value=""/>
+            <property name="name" value=""/>
+            <property name="custom_name" value=""/>
+            <property name="url" value=""/>
+            <property name="code" value=""/>
+            <property name="path" value=""/>
+            <property name="level" value="0"/>
+            <property name="is_leaf" value="0"/>
+            <property name="method" value=""/>
+            <property name="sort" value="0"/>
+        </table>
+
+        <table tableName="auth_role_permissions_rel" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="id" value=""/>
+            <property name="role_id" value=""/>
+            <property name="permission_code" value=""/>
+        </table>
+
+        <table tableName="auth_role_users_rel" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="user_id" value=""/>
+            <property name="role_id" value=""/>
+        </table>
+
+        <table tableName="auth_role_users_rel" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="user_id" value=""/>
+            <property name="role_id" value=""/>
+        </table>
+
+        <table tableName="auth_users" schema="INNODB" enableCountByExample="false" 
+        enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" 
+        selectByExampleQueryId="false">
+            <property name="id" value=""/>
+            <property name="name" value=""/>
+            <property name="pinyin" value=""/>
+            <property name="phone" value=""/>
+            <property name="email" value=""/>
+            <property name="avatar" value=""/>
+            <property name="password" value=""/>
+            <property name="last_login_ip" value=""/>
+            <property name="last_login_at" value=""/>
+            <property name="is_lock" value="0"/>
+        </table>
+    </context>
+</generatorConfiguration>
