@@ -1,7 +1,10 @@
 package com.xue.cookbook.recipes.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import com.xue.cookbook.recipes.dao.MaterialCategoryMapper;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 import com.xue.cookbook.recipes.service.MaterialCategoryService;
@@ -29,9 +32,17 @@ public class MaterialCategoryImpl implements MaterialCategoryService {
     public static List<MaterialCategory> makeTree(List<MaterialCategory> records) {
         List<MaterialCategory> tree = new ArrayList<MaterialCategory>();
 
-        for(MaterialCategory record:records) {
+        Map<Long, MaterialCategory> map = new HashMap<Long, MaterialCategory>();
 
-            System.out.println(record);
+        for(MaterialCategory record:records) {
+            map.put(record.getId(),record);
+        }
+
+ 
+        for (Map.Entry<Long, MaterialCategory> entry : map.entrySet()) {
+        
+           
+        
         }
 
 
