@@ -5,5 +5,5 @@ import java.util.List;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 
 public interface MaterialCategoryService {
-    // List<MaterialCategory> selectAllActive();
+    List<MaterialCategory> selectAllActive();
 }

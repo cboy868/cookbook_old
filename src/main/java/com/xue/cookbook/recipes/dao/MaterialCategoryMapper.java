@@ -43,4 +43,7 @@ public interface MaterialCategoryMapper {
      * @mbg.generated
      */
     int updateByPrimaryKey(MaterialCategory record);
+
+
+    List<MaterialCategory> selectAllActive();
 }
