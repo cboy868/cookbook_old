@@ -114,10 +114,11 @@
 				<version>1.4.0</version>
 				<executions>
 					<execution>
-					<id>Generate MyBatis Artifacts</id>
-					<goals>
-						<goal>generate</goal>
-					</goals>
+						<id>Generate MyBatis Artifacts</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
 					</execution>
 				</executions>
 				<configuration>
