@@ -2,6 +2,7 @@ package com.xue.cookbook.recipes.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 public class MaterialCategory implements Serializable {
     /**
@@ -102,6 +103,17 @@ public class MaterialCategory implements Serializable {
      * @mbg.generated
      */
     private Date updatedAt;
+
+
+    Set<MaterialCategory> children;
+
+    public Set<MaterialCategory> getChildren() {
+        return this.children;
+    }
+
+    public void setChildren(Set<MaterialCategory> children) {
+        this.children = children;
+    }
 
     /**
      *
