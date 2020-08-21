@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xue.cookbook.recipes.dao.MaterialCategoryMapper">
   <select id="selectAllActive" resultMap="BaseResultMap">
-    select id, pid, `level`, code, `name`, sort, is_leaf, cover, deleted_at, created_at, 
+    select id, pid, `level`, code, `name`, sort, is_leaf, cover, created_at, 
     updated_at, intro
     from material_category where deleted_at is null
   </select>

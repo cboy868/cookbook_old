@@ -1,5 +1,6 @@
 package com.xue.cookbook.recipes.dao;
 
+import com.xue.cookbook.core.utils.TreeInterface;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 import java.util.List;
 
@@ -45,5 +46,5 @@ public interface MaterialCategoryMapper {
     int updateByPrimaryKey(MaterialCategory record);
 
 
-    List<MaterialCategory> selectAllActive();
+    List<TreeInterface> selectAllActive();
 }

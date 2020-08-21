@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.xue.cookbook.recipes.model.MaterialCategory;
 
 public class TreeHelper {
 
@@ -16,13 +15,13 @@ public class TreeHelper {
      * @param $records
      * @return array
      */
-    public static List<MaterialCategory> makeTree(List<MaterialCategory> records) {
-        List<MaterialCategory> rootNodes= new ArrayList<>();
-        Map<Long, Set<MaterialCategory>> childNodesMap= new HashMap<Long, Set<MaterialCategory>>();
+    public static List<TreeInterface> makeTree(List<TreeInterface> records) {
+        List<TreeInterface> rootNodes= new ArrayList<>();
+        Map<Long, Set<TreeInterface>> childNodesMap= new HashMap<Long, Set<TreeInterface>>();
 
-        for (MaterialCategory node: records) { 
+        for (TreeInterface node: records) { 
             if (childNodesMap.get(node.getId()) == null) {
-                childNodesMap.put(node.getId(), new HashSet<MaterialCategory >());
+                childNodesMap.put(node.getId(), new HashSet<TreeInterface>());
             }
             node.setChildren(childNodesMap.get(node.getId()));
             if (node.getPid() == 0) {
@@ -30,9 +29,8 @@ public class TreeHelper {
             }
 
             if (node.getPid() != 0) {
-                //6.查看此Node的ParentNode的 ChildNodes是否存在 没有则创建
                 if (childNodesMap.get(node.getPid()) == null) {
-                    childNodesMap.put(node.getPid(), new HashSet<MaterialCategory>());
+                    childNodesMap.put(node.getPid(), new HashSet<TreeInterface>());
                 }
 
                 childNodesMap.get(node.getPid()).add(node);

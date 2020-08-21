@@ -1,24 +1,18 @@
 package com.xue.cookbook.recipes.controller.admin;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import com.xue.cookbook.core.utils.JsonData;
-import com.xue.cookbook.core.utils.TestAbc;
-import com.xue.cookbook.core.utils.TreeDataInterface;
 import com.xue.cookbook.core.utils.TreeHelper;
+import com.xue.cookbook.core.utils.TreeInterface;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 import com.xue.cookbook.recipes.service.MaterialCategoryService;
-import com.xue.cookbook.recipes.service.impl.MaterialCategoryImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-// import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @RestController
@@ -30,27 +24,21 @@ public class MaterialCategoryController {
 
     @RequestMapping("list")
     public JsonData list() throws JsonProcessingException {
-        List<MaterialCategory> list = materialCategoryService.selectAllActive();
-        // List<MaterialCategory> tree = TreeHelper.makeTree(list);
-
-        List<MaterialCategory> tree = MaterialCategoryImpl.makeTree(list);
-
-
-
-        // Set<TestAbc> set = new HashSet<TestAbc>();
-
-        // TestAbc t = new TestAbc();
-        // t.setId(new Integer(1));
-        // set.add(t);
-        
-        
-
-
-        
-
-
-
+        List<TreeInterface> list = materialCategoryService.selectAllActive();
+        List<TreeInterface> tree = TreeHelper.makeTree(list);
 
         return JsonData.success(tree);
+    }
+
+    @RequestMapping("save")
+    public JsonData save() throws JsonProcessingException {
+
+        MaterialCategory category = new MaterialCategory();
+        category.setName("测试类目");
+        category.setPid(new Long(0));
+        int a = materialCategoryService.insert(category);
+
+
+        return JsonData.success(a);
     }
 }
