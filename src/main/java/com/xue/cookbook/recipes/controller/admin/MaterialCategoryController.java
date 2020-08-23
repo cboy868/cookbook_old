@@ -4,7 +4,8 @@ import java.util.List;
 
 import com.xue.cookbook.core.utils.JsonData;
 import com.xue.cookbook.core.utils.TreeHelper;
-import com.xue.cookbook.core.utils.TreeInterface;
+import com.xue.cookbook.core.contracts.TreeInterface;
+import com.xue.cookbook.recipes.dao.MaterialCategoryMapper;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 import com.xue.cookbook.recipes.service.MaterialCategoryService;
 
@@ -38,7 +39,22 @@ public class MaterialCategoryController {
         category.setPid(new Long(0));
         int a = materialCategoryService.insert(category);
 
-
         return JsonData.success(a);
+    }
+
+    @RequestMapping("update")
+    public JsonData update() {
+        MaterialCategory category = new MaterialCategory();
+        category.setName("测试类目修改名字");
+        category.setPid(new Long(7));
+        category.setId(new Long(7));
+        int f = materialCategoryService.update(category);
+
+        return JsonData.success(f);
+    }
+
+    @RequestMapping("detail")
+    public JsonData detail() {
+        return JsonData.success(materialCategoryService.findById(new Long((long)7)));
     }
 }

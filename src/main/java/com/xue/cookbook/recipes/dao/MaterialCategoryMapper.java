@@ -1,6 +1,6 @@
 package com.xue.cookbook.recipes.dao;
 
-import com.xue.cookbook.core.utils.TreeInterface;
+import com.xue.cookbook.core.contracts.TreeInterface;
 import com.xue.cookbook.recipes.model.MaterialCategory;
 import java.util.List;
 

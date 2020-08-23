@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-import com.xue.cookbook.core.utils.TreeInterface;
+import com.xue.cookbook.core.contracts.TreeInterface;
 
 public class MaterialCategory implements Serializable,TreeInterface {
     /**

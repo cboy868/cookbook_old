@@ -1,4 +1,4 @@
-package com.xue.cookbook.core.utils;
+package com.xue.cookbook.core.contracts;
 
 import java.util.Set;
 
